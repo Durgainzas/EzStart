@@ -1,0 +1,11 @@
+{
+    "name": "EzStart",
+    "version": "0.1.0",
+    "title": "Easy Start",
+    "author": "Sebastian Wallo",
+    "contact": "sebastian.wallo@gmail.com",
+    "homepage": "",
+    "factorio-version": "0.16",
+    "dependecies": ["base >= 0.15"],
+    "description": "This mod could make yuur start easier"
+}
