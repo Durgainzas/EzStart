@@ -1,6 +1,6 @@
 $currentFolder = Get-item $PSScriptRoot
-$infoFilePath = Join-Path -Path $currentFolder -ChildPath "\info.json"
-$sourcePath = Join-Path -Path $currentFolder -ChildPath "\*"
+$infoFilePath = Join-Path -Path $currentFolder -ChildPath "source\info.json"
+$sourcePath = Join-Path -Path $currentFolder -ChildPath "source\*"
 $outputFolder = Join-Path -Path $currentFolder -ChildPath "output\"
 
 function Build-Mod {
