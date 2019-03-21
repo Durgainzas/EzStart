@@ -1,12 +1,14 @@
 $sourceFolder = Get-item $PSScriptRoot
-$sourcePath = Join-Path -Path $sourceFolder -ChildPath "\output\*"
+$sourcePath = Join-Path -Path $sourceFolder -ChildPath "\output\*.zip"
 $appDataPath = $env:APPDATA
 $targetPath = Join-Path -Path $appDataPath -ChildPath "\Factorio\mods\"
 
 function Deploy () {
-    Copy-Item -Path $sourcePath -Destination $targetPath -Force
+    Remove-Item -Path ($targetPath + "*") -Filter "EzStart*" -Force
+    $latest = Get-ChildItem -Path $sourcePath | Sort-Object LastAccessTime -Descending | Select-Object -First 1
+    Copy-Item -Path $latest -Destination $targetPath -Force
 
-    if (Join-Path -Path $targetPath -ChildPath "\EzStart*" | Test-Path) {
+    if (Test-Path $latest) {
         Write-Host "Deployment successful."
         break
     }

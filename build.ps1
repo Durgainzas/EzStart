@@ -2,11 +2,15 @@ $currentFolder = Get-item $PSScriptRoot
 $infoFilePath = Join-Path -Path $currentFolder -ChildPath "source\info.json"
 $sourcePath = Join-Path -Path $currentFolder -ChildPath "source\*"
 $outputFolder = Join-Path -Path $currentFolder -ChildPath "output\"
+$outputSubFolder
 
 function Build-Mod {
-    if (-Not (Test-Path $outputFolder)) { New-Item -ItemType Directory -Path $outputFolder -Force }
+    $modName = Get-FileName($infoFilePath)
+    $outputSubFolder = Join-Path -Path $outputFolder -ChildPath $modName
+    if (-Not (Test-Path $outputSubFolder)) { New-Item -ItemType Directory -Path $outputSubFolder -Force }
+    Copy-Item -Path $sourcePath -Destination $outputSubFolder -Force
 
-    if (Get-FileName($infoFilePath) | Export-ToZipFile | Test-Path)
+    if (Export-ToZipFile($modName) | Test-Path)
     {
         Write-Host "Build successful."
         break
@@ -40,7 +44,7 @@ function Export-ToZipFile {
     $outputPath = Join-Path -Path $outputFolder -ChildPath ($file + ".zip")
 
     try {
-        Compress-Archive -Path $sourcePath -DestinationPath $outputPath -Force -CompressionLevel NoCompression 
+        Compress-Archive -Path $outputSubFolder -DestinationPath $outputPath -Force -CompressionLevel NoCompression
     }
     catch {
         Write-Host "There was error during creating zipfile"
