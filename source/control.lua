@@ -1,6 +1,10 @@
 function wrapper()
     add_test_command_items()
-    add_test_command_resources()
+    add_test_command_resources_iron()
+    add_test_command_resources_copper()
+    add_test_command_resources_plastic()
+    add_test_command_resources_steel()
+    add_test_command_resources_coal()
     add_test_command_smelt()
     add_test_command_smelt_iron()
 end
@@ -42,16 +46,68 @@ function add_test_command_items ()
     end)
 end
 
-function add_test_command_resources () 
-    commands.add_command("testres", "test-resources", function(event)
+function add_test_command_resources_iron () 
+    commands.add_command("i", "test-resources", function(event)
         local player = game.players[event.player_index]
         local items
 
         items = {
-            {"iron-plate", 400},
-            {"copper-plate", 300},
-            {"plastic-bar", 100},
-            {"steel-plate", 200},
+            {"iron-plate", 400}
+        }
+        for i, v in pairs(items) do
+            player.insert{name = v[1], count = v[2]}
+        end
+    end)
+end
+
+function add_test_command_resources_copper () 
+    commands.add_command("cp", "test-resources", function(event)
+        local player = game.players[event.player_index]
+        local items
+
+        items = {
+            {"copper-plate", 300}
+        }
+        for i, v in pairs(items) do
+            player.insert{name = v[1], count = v[2]}
+        end
+    end)
+end
+
+function add_test_command_resources_plastic () 
+    commands.add_command("p", "test-resources", function(event)
+        local player = game.players[event.player_index]
+        local items
+
+        items = {
+            {"plastic-bar", 100}
+        }
+        for i, v in pairs(items) do
+            player.insert{name = v[1], count = v[2]}
+        end
+    end)
+end
+
+function add_test_command_resources_steel () 
+    commands.add_command("s", "test-resources", function(event)
+        local player = game.players[event.player_index]
+        local items
+
+        items = {
+            {"steel-plate", 200}
+        }
+        for i, v in pairs(items) do
+            player.insert{name = v[1], count = v[2]}
+        end
+    end)
+end
+
+function add_test_command_resources_coal () 
+    commands.add_command("cl", "test-resources", function(event)
+        local player = game.players[event.player_index]
+        local items
+
+        items = {
             {"coal", 50}
         }
         for i, v in pairs(items) do
