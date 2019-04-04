@@ -1,23 +1,12 @@
 function add_test_command () 
-    commands.add_command("test", "test-cmd", function(event)
+    commands.add_command("testitem", "test-cmd", function(event)
         local player = game.players[event.player_index]
         local items
         local armor
 
         items = {
             {"power-armor-mk2", 1},
-            {"construction-robot", 50},
-            {"fast-transport-belt", 800},
-            {"fast-inserter", 200},
-            {"fast-underground-belt", 154},
-            {"long-handed-inserter", 100},
-            {"steel-furnace", 100},
-            {"small-electric-pole", 98},
-            {"fast-splitter", 16},
-            {"iron-chest", 4},
-            {"small-lamp", 4},
-            {"iron-plate", 100},
-            {"copper-plate", 100},
+            {"construction-robot", 50}
         }
         armor = {
             {"personal-roboport-mk2-equipment"},
@@ -65,7 +54,60 @@ function add_test_command2 ()
     end)
 end
 
+function add_test_command3 () 
+    commands.add_command("testsmeltiron", "test-iron-smelting", function(event)
+        local player = game.players[event.player_index]
+        local items
+        local armor
+
+        items = {
+            {"transport-belt", 400},
+            {"inserter", 100},
+            {"underground-belt", 77},
+            {"long-handed-inserter", 50},
+            {"small-electric-pole", 49},
+            {"small-lamp", 10},
+            {"splitter", 8},
+            {"fast-inserter", 4},
+            {"iron-chest", 2},
+            {"stone-furnace", 50}
+        }
+        for i, v in pairs(items) do
+            player.insert{name = v[1], count = v[2]}
+        end
+    end)
+end
+
+function add_test_command4 () 
+    commands.add_command("testsmelt", "test-smelting", function(event)
+        local player = game.players[event.player_index]
+        local items
+        local armor
+
+        items = {
+            {"transport-belt", 400},
+            {"inserter", 100},
+            {"underground-belt", 77},
+            {"long-handed-inserter", 50},
+            {"small-electric-pole", 49},
+            {"small-lamp", 10},
+            {"splitter", 8},
+            {"fast-inserter", 4},
+            {"iron-chest", 2},
+            {"stone-furnace", 50}
+        }
+        for i, v in pairs(items) do
+            player.insert{name = v[1], count = v[2]}
+        end
+    end)
+end
+
+
 script.on_init(add_test_command)
 script.on_load(add_test_command)
 script.on_init(add_test_command2)
 script.on_load(add_test_command2)
+script.on_init(add_test_command3)
+script.on_load(add_test_command3)
+script.on_init(add_test_command4)
+script.on_load(add_test_command4)
