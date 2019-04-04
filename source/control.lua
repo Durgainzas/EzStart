@@ -47,7 +47,7 @@ function add_test_command_items ()
 end
 
 function add_test_command_resources_iron () 
-    commands.add_command("i", "test-resources", function(event)
+    commands.add_command("iron", "test-resources", function(event)
         local player = game.players[event.player_index]
         local items
 
@@ -61,7 +61,7 @@ function add_test_command_resources_iron ()
 end
 
 function add_test_command_resources_copper () 
-    commands.add_command("cp", "test-resources", function(event)
+    commands.add_command("copper", "test-resources", function(event)
         local player = game.players[event.player_index]
         local items
 
@@ -75,7 +75,7 @@ function add_test_command_resources_copper ()
 end
 
 function add_test_command_resources_plastic () 
-    commands.add_command("p", "test-resources", function(event)
+    commands.add_command("plastic", "test-resources", function(event)
         local player = game.players[event.player_index]
         local items
 
@@ -89,7 +89,7 @@ function add_test_command_resources_plastic ()
 end
 
 function add_test_command_resources_steel () 
-    commands.add_command("s", "test-resources", function(event)
+    commands.add_command("steel", "test-resources", function(event)
         local player = game.players[event.player_index]
         local items
 
@@ -103,7 +103,7 @@ function add_test_command_resources_steel ()
 end
 
 function add_test_command_resources_coal () 
-    commands.add_command("cl", "test-resources", function(event)
+    commands.add_command("coal", "test-resources", function(event)
         local player = game.players[event.player_index]
         local items
 
