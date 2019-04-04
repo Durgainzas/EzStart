@@ -46,5 +46,26 @@ function add_test_command ()
     end)
 end
 
+function add_test_command2 () 
+    commands.add_command("testres", "test-resources", function(event)
+        local player = game.players[event.player_index]
+        local items
+        local armor
+
+        items = {
+            {"iron-plate", 400},
+            {"copper-plate", 300},
+            {"plastic-bar", 100},
+            {"steel-plate", 200},
+            {"coal", 50}
+        }
+        for i, v in pairs(items) do
+            player.insert{name = v[1], count = v[2]}
+        end
+    end)
+end
+
 script.on_init(add_test_command)
 script.on_load(add_test_command)
+script.on_init(add_test_command2)
+script.on_load(add_test_command2)
