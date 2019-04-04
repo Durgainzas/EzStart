@@ -1,4 +1,11 @@
-function add_test_command () 
+function wrapper()
+    add_test_command_items()
+    add_test_command_resources()
+    add_test_command_smelt()
+    add_test_command_smelt_iron()
+end
+
+function add_test_command_items () 
     commands.add_command("testitem", "test-cmd", function(event)
         local player = game.players[event.player_index]
         local items
@@ -35,11 +42,10 @@ function add_test_command ()
     end)
 end
 
-function add_test_command2 () 
+function add_test_command_resources () 
     commands.add_command("testres", "test-resources", function(event)
         local player = game.players[event.player_index]
         local items
-        local armor
 
         items = {
             {"iron-plate", 400},
@@ -54,11 +60,10 @@ function add_test_command2 ()
     end)
 end
 
-function add_test_command3 () 
+function add_test_command_smelt_iron () 
     commands.add_command("testsmeltiron", "test-iron-smelting", function(event)
         local player = game.players[event.player_index]
         local items
-        local armor
 
         items = {
             {"transport-belt", 400},
@@ -78,11 +83,10 @@ function add_test_command3 ()
     end)
 end
 
-function add_test_command4 () 
+function add_test_command_smelt () 
     commands.add_command("testsmelt", "test-smelting", function(event)
         local player = game.players[event.player_index]
         local items
-        local armor
 
         items = {
             {"transport-belt", 400},
@@ -103,11 +107,5 @@ function add_test_command4 ()
 end
 
 
-script.on_init(add_test_command)
-script.on_load(add_test_command)
-script.on_init(add_test_command2)
-script.on_load(add_test_command2)
-script.on_init(add_test_command3)
-script.on_load(add_test_command3)
-script.on_init(add_test_command4)
-script.on_load(add_test_command4)
+script.on_init(wrapper)
+script.on_load(wrapper)
