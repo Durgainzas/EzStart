@@ -18,6 +18,8 @@ function add_test_command_items ()
         items = {
             {"power-armor-mk2", 1},
             {"construction-robot", 50}
+            {"submachine-gun", 1},
+            {"piercing-rounds-magazine", 200}
         }
         armor = {
             {"personal-roboport-mk2-equipment"},
@@ -39,9 +41,10 @@ function add_test_command_items ()
             player.insert{name = v[1], count = v[2]}
         end
 
-        local grid = player.get_inventory(defines.inventory.player_armor)[1].grid
+        -- local grid = player.get_inventory(defines.inventory.player_armor)[1].grid
         for  i, v in pairs(armor) do
-            grid.put({name = v[1]})
+            player.insert{name = v[1], count = v[2]}
+            -- grid.put({name = v[1]})
         end
     end)
 end
@@ -155,6 +158,22 @@ function add_test_command_smelt ()
             {"fast-inserter", 4},
             {"iron-chest", 2},
             {"stone-furnace", 50}
+        }
+        for i, v in pairs(items) do
+            player.insert{name = v[1], count = v[2]}
+        end
+    end)
+end
+
+function add_test_command_car () 
+    commands.add_command("testcar", "test-car", function(event)
+        local player = game.players[event.player_index]
+        local items
+
+        items = {
+            {"car", 1},
+            {"solid-fuel", 50},
+            {"piercing-rounds-magazine", 200}
         }
         for i, v in pairs(items) do
             player.insert{name = v[1], count = v[2]}
