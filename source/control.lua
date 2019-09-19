@@ -7,6 +7,7 @@ function wrapper()
     add_test_command_resources_coal()
     add_test_command_smelt()
     add_test_command_smelt_iron()
+    add_test_command_car()
 end
 
 function add_test_command_items () 
@@ -17,7 +18,7 @@ function add_test_command_items ()
 
         items = {
             {"power-armor-mk2", 1},
-            {"construction-robot", 50}
+            {"construction-robot", 50},
             {"submachine-gun", 1},
             {"piercing-rounds-magazine", 200}
         }
