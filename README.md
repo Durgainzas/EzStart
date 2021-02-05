@@ -2,3 +2,6 @@
 ### Mod for personal use
 I'm not planning on releasing this mode to public
 Use on your own risk!
+
+## List of available cheats:
+
