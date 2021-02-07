@@ -8,10 +8,12 @@ function wrapper()
     add_test_command_smelt()
     add_test_command_smelt_iron()
     add_test_command_car()
-    add_test_mining()
+    add_test_command_mining()
     add_test_command_2in1out()
     add_test_command_3in1out()
     add_test_command_logistics()
+    add_test_command_generator()
+    add_test_command_defense()
 end
 
 function add_test_command_items () 
@@ -238,7 +240,22 @@ function add_test_command_car ()
     end)
 end
 
-function add_test_mining()
+function add_test_command_defense()
+    commands.add_command("testdefense", "test-defense", function(event)
+        local player = game.players[event.player_index]
+        local items
+        items = {
+            {"stone-wall", 68},
+            {"gun-turret", 5},
+            {"piercing-rounds-magazine", 1000}
+        }
+        for i, v in pairs(items) do
+            player.insert{name = v[1], count = v[2]}
+        end
+    end)
+end
+
+function add_test_command_mining()
     commands.add_command("testmining", "test-mining", function(event)
         local player = game.players[event.player_index]
         local items
@@ -246,6 +263,24 @@ function add_test_mining()
             {"transport-belt", 8},
             {"electric-mining-drill", 4},
             {"small-electric-pole", 1},
+        }
+        for i, v in pairs(items) do
+            player.insert{name = v[1], count = v[2]}
+        end
+    end)
+end
+
+function add_test_command_generator()
+    commands.add_command("testgenerator", "test-generator", function(event)
+        local player = game.players[event.player_index]
+        local items
+        items = {
+            {"transport-belt", 19},
+            {"steam-engine", 5},
+            {"small-electric-pole", 8},
+            {"inserter", 5},
+            {"boiler", 5},
+            {"pipe", 4}
         }
         for i, v in pairs(items) do
             player.insert{name = v[1], count = v[2]}
