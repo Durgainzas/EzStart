@@ -262,6 +262,9 @@ function add_test_command_logistics()
             {"underground-belt", 50},
             {"splitter", 20}
         }
+        for i, v in pairs(items) do
+            player.insert{name = v[1], count = v[2]}
+        end
     end)
 end
 
