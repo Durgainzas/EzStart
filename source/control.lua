@@ -8,6 +8,10 @@ function wrapper()
     add_test_command_smelt()
     add_test_command_smelt_iron()
     add_test_command_car()
+    add_test_mining()
+    add_test_command_2in1out()
+    add_test_command_3in1out()
+    add_test_command_logistics()
 end
 
 function add_test_command_items () 
@@ -126,16 +130,19 @@ function add_test_command_smelt_iron ()
         local items
 
         items = {
-            {"transport-belt", 400},
+            {"transport-belt", 403},
+            {"stone-wall", 174},
             {"inserter", 100},
-            {"underground-belt", 77},
+            {"underground-belt", 78},
             {"long-handed-inserter", 50},
-            {"small-electric-pole", 49},
+            {"small-electric-pole", 50},
+            {"stone-furnace", 50},
+            {"gun-turret", 12},
             {"small-lamp", 10},
-            {"splitter", 8},
+            {"splitter", 9},
             {"fast-inserter", 4},
             {"iron-chest", 2},
-            {"stone-furnace", 50}
+            {"firearm-magazine", 2400}
         }
         for i, v in pairs(items) do
             player.insert{name = v[1], count = v[2]}
@@ -149,16 +156,65 @@ function add_test_command_smelt ()
         local items
 
         items = {
-            {"transport-belt", 400},
-            {"inserter", 100},
-            {"underground-belt", 77},
-            {"long-handed-inserter", 50},
-            {"small-electric-pole", 49},
-            {"small-lamp", 10},
-            {"splitter", 8},
-            {"fast-inserter", 4},
+            {"transport-belt", 329},
+            {"stone-wall", 156},
+            {"inserter", 80},
+            {"underground-belt", 66},
+            {"long-handed-inserter", 40},
+            {"small-electric-pole", 40},
+            {"stone-furnace", 40},
+            {"gun-turret", 10},
+            {"small-lamp", 7},
+            {"splitter", 5},
+            {"fast-inserter", 2},
+            {"iron-chest", 1},
+            {"firearm-magazine", 2000}
+        }
+        for i, v in pairs(items) do
+            player.insert{name = v[1], count = v[2]}
+        end
+    end)
+end
+
+function add_test_command_2in1out () 
+    commands.add_command("2in1out", "2in-1out", function(event)
+        local player = game.players[event.player_index]
+        local items
+
+        items = {
+            {"transport-belt", 116},
+            {"stone-wall", 110},
+            {"underground-belt", 38},
+            {"fast-inserter", 32},
+            {"small-electric-pole", 24},
+            {"assembling-machine-1", 10},
+            {"gun-turret", 8},
+            {"splitter", 4},
             {"iron-chest", 2},
-            {"stone-furnace", 50}
+            {"firearm-magazine", 1600}
+        }
+        for i, v in pairs(items) do
+            player.insert{name = v[1], count = v[2]}
+        end
+    end)
+end
+
+function add_test_command_3in1out () 
+    commands.add_command("3in1out", "3in-1out", function(event)
+        local player = game.players[event.player_index]
+        local items
+
+        items = {
+            {"transport-belt", 113},
+            {"stone-wall", 110},
+            {"underground-belt", 58},
+            {"fast-inserter", 42},
+            {"small-electric-pole", 22},
+            {"assembling-machine-1", 10},
+            {"gun-turret", 8},
+            {"splitter", 4},
+            {"iron-chest", 2},
+            {"firearm-magazine", 1600}
         }
         for i, v in pairs(items) do
             player.insert{name = v[1], count = v[2]}
@@ -182,6 +238,32 @@ function add_test_command_car ()
     end)
 end
 
+function add_test_mining()
+    commands.add_command("testmining", "test-mining", function(event)
+        local player = game.players[event.player_index]
+        local items
+        items = {
+            {"transport-belt", 8},
+            {"electric-mining-drill", 4},
+            {"small-electric-pole", 1},
+        }
+        for i, v in pairs(items) do
+            player.insert{name = v[1], count = v[2]}
+        end
+    end)
+end
+
+function add_test_command_logistics()
+    commands.add_command("testlogistics", "test-logistics", function (event)
+        local player = game.players[event.player_index]
+        local items
+        items = {
+            {"transport-belt", 200},
+            {"underground-belt", 50},
+            {"splitter", 20}
+        }
+    end)
+end
 
 script.on_init(wrapper)
 script.on_load(wrapper)
