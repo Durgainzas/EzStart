@@ -276,7 +276,7 @@ function add_test_command_generator()
         local items
         items = {
             {"transport-belt", 19},
-            {"steam-engine", 5},
+            {"steam-engine", 10},
             {"small-electric-pole", 8},
             {"inserter", 5},
             {"boiler", 5},
